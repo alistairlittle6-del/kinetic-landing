@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kinetic | The Physics of Clean</title>
-<meta name="description" content="Kinetic water activation technology for professional cleaning. Wall-mounted, pump-free, mains-pressure. Launching Q3 2026.">
+<meta name="description" content="Wall-mounted, mains-pressure water activation for professional cleaning. Launching Q3 2026.">
 <meta name="theme-color" content="#171b21">
 <meta property="og:title" content="Kinetic | The Physics of Clean">
 <meta property="og:description" content="Wall-mounted water activation for professional cleaning. Physics, not chemicals.">
@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#171b21;--bg2:#1c2128;--bg3:#22272e;--border:rgba(255,255,255,.06);--border-h:rgba(255,255,255,.12);--accent:#2874C6;--accent-b:#5ba0e8;--t1:#fff;--t2:#b0b0b0;--t3:#888;--t4:#555;--t5:rgba(255,255,255,.2)}
+:root{--bg:#171b21;--bg2:#1c2128;--bg3:#22272e;--border:rgba(255,255,255,.06);--border-h:rgba(255,255,255,.12);--accent:#2874C6;--accent-b:#5ba0e8;--t1:#fff;--t2:#b0b0b0;--t3:#888;--t4:#7a7a7a;--t5:rgba(255,255,255,.2)}
 ::selection{background:rgba(40,116,198,.25);color:#fff}
 html{scroll-behavior:smooth}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--t1);overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -30,9 +30,10 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--t1);overfl
 #particles{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.2}
 
 /* ── Intro overlay ── */
-.intro-overlay{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease}
+.intro-overlay{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease;animation:introClear .6s 2.4s forwards}
 .intro-overlay.done{opacity:0;pointer-events:none}
 @keyframes introP{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
+@keyframes introClear{to{opacity:0;pointer-events:none;visibility:hidden}}
 
 /* ── Sections ── */
 section{position:relative;z-index:2}
@@ -64,7 +65,7 @@ section{position:relative;z-index:2}
 
 .cd-block{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;padding:.85rem .7rem .65rem;min-width:64px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .cd-value{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5.5vw,2.8rem);line-height:1;color:var(--t1)}
-.cd-unit{font-size:.5rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--t4);margin-top:.3rem;display:block}
+.cd-unit{font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--t4);margin-top:.3rem;display:block}
 
 .scroll-hint{margin-top:2.5rem;z-index:3;position:relative;opacity:0;transition:opacity .6s}
 .scroll-hint.in{opacity:1}
@@ -124,10 +125,15 @@ section{position:relative;z-index:2}
 .notify-btn{padding:.9rem 1.75rem;background:#fff;border:none;color:#171b21;font-family:'Outfit',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:all .3s}
 .notify-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,255,255,.06)}
 .notify-btn.success{background:#2a7d5a;color:#fff;pointer-events:none}
-.notify-note{font-size:.5rem;color:var(--t4);margin-top:.6rem;letter-spacing:.05em}
+.notify-note{font-size:.7rem;color:var(--t4);margin-top:.6rem;letter-spacing:.05em}
+.notify-privacy{font-size:.7rem;color:var(--t4);margin-top:.4rem;letter-spacing:.05em}
+.notify-privacy a{color:var(--t3);text-decoration:underline;text-decoration-color:rgba(255,255,255,.2)}
+.notify-privacy a:hover{color:var(--t2)}
+.notify-status{min-height:1.2em;font-size:.7rem;color:#e07b6e;margin-top:.6rem;letter-spacing:.02em}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* ── Footer ── */
-.footer{position:relative;z-index:2;text-align:center;padding:2rem 1.5rem;font-size:.5rem;color:rgba(255,255,255,.1);letter-spacing:.1em;border-top:1px solid var(--border)}
+.footer{position:relative;z-index:2;text-align:center;padding:2rem 1.5rem;font-size:.7rem;color:rgba(255,255,255,.35);letter-spacing:.1em;border-top:1px solid var(--border)}
 
 /* ── Reveals ── */
 .r{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
@@ -175,7 +181,15 @@ section{position:relative;z-index:2}
   .problem-grid{grid-template-columns:1fr 1fr}
   .problem-card:nth-child(3){grid-column:1/-1;max-width:50%;justify-self:center}
 }
+@media (prefers-reduced-motion: reduce){
+  .intro-overlay{display:none!important}
+  #particles{display:none!important}
+  .wordmark,.tagline,.scroll-hint svg{animation:none!important}
+  .tagline{width:auto!important}
+  *,*::before,*::after{transition-duration:.01s!important;animation-duration:.01s!important;animation-iteration-count:1!important}
+}
 </style>
+<noscript><style>.intro-overlay{display:none}</style></noscript>
 </head>
 <body>
 
@@ -360,11 +374,14 @@ section{position:relative;z-index:2}
 <section>
   <div class="cta-section r">
     <p class="cta-sub">Be first to know when Kinetic launches.</p>
+    <label for="notify-email" class="sr-only">Email address</label>
     <div class="notify-form" id="notify-form">
-      <input class="notify-input" type="email" id="notify-email" placeholder="Your email address" autocomplete="email" required>
+      <input class="notify-input" type="email" id="notify-email" placeholder="Your email address" autocomplete="email" required aria-describedby="notify-status">
       <button class="notify-btn" id="notify-btn" type="button">Notify Me</button>
     </div>
+    <div id="notify-status" class="notify-status" aria-live="polite"></div>
     <p class="notify-note">Launch updates only. No spam.</p>
+    <p class="notify-privacy">By submitting, you agree to our <a href="/privacy">privacy policy</a>.</p>
   </div>
 </section>
 
@@ -424,8 +441,9 @@ tick(); setInterval(tick,1000);
 
 // ═══ EMAIL ═══
 document.getElementById('notify-btn').addEventListener('click',function(){
-  const inp=document.getElementById('notify-email'),btn=this;
-  if(!inp.value||!inp.validity.valid){inp.style.outline='1px solid #c0392b';setTimeout(()=>inp.style.outline='none',2000);return;}
+  const inp=document.getElementById('notify-email'),btn=this,status=document.getElementById('notify-status');
+  if(!inp.value||!inp.validity.valid){status.textContent='Please enter a valid email.';inp.style.outline='1px solid #c0392b';setTimeout(()=>inp.style.outline='none',2000);return;}
+  status.textContent='';
   btn.textContent='Sending...';btn.disabled=true;
   fetch('https://formspree.io/f/meevoggg',{
     method:'POST',
