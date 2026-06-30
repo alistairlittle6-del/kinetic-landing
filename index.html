@@ -593,7 +593,7 @@ section{position:relative;z-index:2}
 })();
 
 // ═══ COUNTDOWN ═══
-const T=new Date('2026-12-01T00:00:00Z').getTime();
+const T=new Date('2026-10-01T00:00:00Z').getTime();
 function tick(){
   const d=Math.max(0,T-Date.now());
   document.getElementById('cd-days').textContent=String(Math.floor(d/864e5)).padStart(2,'0');
